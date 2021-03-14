@@ -72,7 +72,7 @@ class UserController extends Controller
         // ]);
 
         if (Auth::user()->role === 'Admin') {
-            Session::flash('message', 'Météorologie ou Technicien ajouté avec succès');
+            Session::flash('message', 'Ajout réussi');
         } else {
             Session::flash('message', 'Technicien ajouté avec succès');
         }

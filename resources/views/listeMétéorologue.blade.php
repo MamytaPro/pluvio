@@ -33,10 +33,9 @@ Administrateur
       <td>{{$met->email}}</td>
       <td>{{$met->tel}}</td>
       <td>
-      <a href="" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
-          <a href="" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></a>
-    </td>
-      
+        <a href="{{route('edituser',['id'=> $met->id])}}" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
+        <a href="{{route('deleteuser',['id'=> $met->id])}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer?')"><i class="fa fa-trash"></i></a>
+      </td>
     </tr>
   @endforeach
   </tbody>
