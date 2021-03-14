@@ -1,0 +1,45 @@
+@extends('layouts.master')
+@section('title')
+Administrateur
+@endsection
+@section('content')
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <h1>Liste des Météorologues</h1>
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="{{route('add-user')}}" class="btn btn-outline-success btn-sm">Ajouter un nouveau</a>
+        </div>
+    </div>
+    <div class="row">
+    <table class="table table-dark">
+  <thead>
+    <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Adresse</th>
+        <th>E-mail</th>
+        <th>Téléphone</th>
+        <th>Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($meteos as $met)
+    <tr>
+      <td>{{$met->prenom}}</td>
+      <td>{{$met->nom}}</td>
+      <td>{{$met->adresse}}</td>
+      <td>{{$met->email}}</td>
+      <td>{{$met->tel}}</td>
+      <td>
+      <a href="" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
+          <a href="" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></a>
+    </td>
+      
+    </tr>
+  @endforeach
+  </tbody>
+</table>
+    </div>
+@endsection
