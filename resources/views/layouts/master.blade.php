@@ -35,6 +35,8 @@
 
  @include('layouts.sidebar')
 
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -46,6 +48,8 @@
     </div>
 
   </div>
+ @include('layouts.footer')
+
 </div>
 <!-- jQuery -->
 <script src="assets/plugins/jquery/jquery.min.js"></script>

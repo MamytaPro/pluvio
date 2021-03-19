@@ -17,6 +17,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MeteorologueController;
 use App\Http\Controllers\TechnicienController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReleveController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,6 +28,9 @@ Route::get('/administrateur', [AdminController::class, 'index'])->name('admin');
 Route::get('/meteorologue', [MeteorologueController::class, 'index'])->name('meteo');
 
 Route::get('/technicien', [TechnicienController::class, 'index'])->name('technicien');
+
+Route::get('/releve', [ReleveController::class, 'index'])->name('releve');
+
 
 Route::get('/add-user', function(){
     return view('register', ['page' => 'adduser']);

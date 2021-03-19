@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title')
-Technicien
+Releve
 @endsection
 @section('content')
-<h1>Technicien</h1>
+<h1>Relevé</h1>
 @endsection

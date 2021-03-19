@@ -1,4 +1,6 @@
 @extends('layouts.master')
+
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -80,11 +82,11 @@
                                 <button type="submit" class="btn btn-outline-success">
                                     Modifier
                                 </button>
-                        </div>
+                            </div>
                             <div class="col-md-6 text-right">
                                 <a href="{{route('meteo')}}" class="btn btn-outline-danger">Annuler</a>
-                        </div>
-                     
+                            </div>
+                         </div>
                     </form>
                 </div>
             </div>

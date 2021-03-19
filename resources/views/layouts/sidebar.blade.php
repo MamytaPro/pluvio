@@ -2,9 +2,9 @@
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Sidebar -->
     <div class="sidebar">
-
+    
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+      <nav class="mt-2" >
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -35,10 +35,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('meteo')}}" class="nav-link @if($page == 'meteo') active @endif">
+            <a href="" class="nav-link">
               <i class="fas fa-cloud-rain"></i>
               <p>
                 Station
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('releve')}}" class="nav-link ">
+              <i class="fas fa-cloud-rain"></i>
+              <p>
+                Relevés
               </p>
             </a>
           </li>
@@ -53,6 +61,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('releve')}}" class="nav-link ">
+              <i class="fas fa-cloud-rain"></i>
+              <p>
+                Relevés
+              </p>
+            </a>
+          </li>
           @endif
 
           @if(Auth::user()->role === "Météorologue")
@@ -60,17 +76,32 @@
             <a href="{{route('meteo')}}" class="nav-link @if($page == 'meteo') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
-                Météorologue
+                Technicien
               </p>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a href="" class="nav-link ">
+              <i class="fas fa-cloud-rain"></i>
+              <p>
+                Station
+              </p>
+            </a>
+          </li>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link ">
+              <i class="fas fa-cloud-rain"></i>
+              <p>
+                Relevés
+              </p>
+            </a>
+          </li>
           @endif
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link"  onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-
-              <i class="fas fa-sign-out-alt"></i>
+            <i class="fas fa-sign-out-alt"></i>
               <p>
                 Déconnexion
               </p>
