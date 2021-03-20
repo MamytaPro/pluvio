@@ -18,6 +18,8 @@ use App\Http\Controllers\MeteorologueController;
 use App\Http\Controllers\TechnicienController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReleveController;
+use App\Http\Controllers\StationController;
+
 
 
 Route::get('/', function () {
@@ -31,11 +33,19 @@ Route::get('/technicien', [TechnicienController::class, 'index'])->name('technic
 
 Route::get('/releve', [ReleveController::class, 'index'])->name('releve');
 
+Route::get('/station', [StationController::class, 'index'])->name('station');
+
+
 
 Route::get('/add-user', function(){
     return view('register', ['page' => 'adduser']);
 })->name('add-user');
+Route::get('/add-station', function(){
+    return view('registerStation', ['page' => 'addstation']);
+})->name('add-station');
+
 Route::post('/add-user', [UserController::class, 'store'])->name('adduser');
+Route::post('/add-station', [StationController::class, 'store'])->name('addstation');
 Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name('edituser');
 Route::post('/edit-user/{id}', [UserController::class, 'update'])->name('update');
 Route::get('/delete-user/{id}', [UserController::class, 'destroy'])->name('deleteuser');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Station;
 use Illuminate\Http\Request;
 
 class StationController extends Controller
@@ -13,7 +14,11 @@ class StationController extends Controller
      */
     public function index()
     {
-        //
+        $stations = Station::with('User');
+        return view('station', [
+            'page' => 'station',
+            'stations' => $stations
+        ]);
     }
 
     /**
@@ -34,7 +39,33 @@ class StationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => ['required', 'string', 'max:255'],
+            'departement' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'region' => ['required', 'string'],
+            'tech_id' => ['required', 'string'],
+            'adresse' => ['required', 'string'],
+        ]);
+
+        $station = new Sation();
+
+        $station->nom = $request->nom;
+        $station->departement = $request->departement;
+        $station->region = $request->region;
+        $station->tech_id = $request->Auth::user('id');
+        $station->adresse = $request->adresse;
+        
+
+        $station->save();
+
+
+        if (Auth::user()->role === 'Admin') {
+            Session::flash('message', 'Ajout réussi');
+        } else {
+            Session::flash('message', 'Ajout réussi');
+        }
+        
+        return redirect()->route('station');
     }
 
     /**
