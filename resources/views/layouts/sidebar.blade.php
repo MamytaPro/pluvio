@@ -5,11 +5,13 @@
     <div class="sidebar">
       <!-- Sidebar Menu -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        <div class="image mt-2">
+          <img src="assets/dist/img/avatarP.png" class="img-circle" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a class="nav-link" href="#" role="button">
+            <h6> {{ Auth::user()->prenom }} {{Auth::user()->nom}}</h6>
+          </a>
         </div>
       </div>
       <nav class="mt-2" >
@@ -18,7 +20,7 @@
                with font-awesome or any other icon font library -->
             
           @if(Auth::user()->role === "Admin")
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="{{route('admin')}}" class="nav-link @if($page == 'admin') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
@@ -26,7 +28,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="{{route('getmeteo')}}" class="nav-link @if($page == 'getmeteo') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
@@ -42,13 +44,32 @@
                 </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{route('station')}}" class="nav-link @if($page == 'station') active @endif">
+          <li class="nav-item menu open">
+            <a href="#" class="nav-link @if($page == 'station') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
-                Station
+                Stations
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav item">
+                <a href="{{route('station')}}" class="nav-link @if($page == 'station') active @endif">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Liste des Stations
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Localisation
+                  </p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="{{route('releve')}}" class="nav-link @if($page == 'releve') active @endif">

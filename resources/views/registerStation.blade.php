@@ -1,7 +1,7 @@
 @extends('layouts.master');
 @section('content')
 <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8" background="gray">
             <div class="card">
                 <div class="card-header"><b>Ajouter une station</b></div>
                 <div class="card-body">
@@ -16,8 +16,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group">
                             <label for="">Département</label>
                             <input type="text" name="departement" value="{{ old('departement') }}" class="form-control @error('departement') is-invalid @enderror" require>
                             @error('departement')
@@ -26,20 +25,10 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group">
                             <label for="">Région</label>
                             <input type="text" name="region" value="{{ old('region') }}" class="form-control @error('region') is-invalid @enderror" require>
                             @error('region')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Technicien</label>
-                            <input type="text" name="tech_id" value="{{ old('tech_id') }}" class="form-control @error('tech_id') is-invalid @enderror" require>
-                            @error('tech_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

@@ -26,13 +26,13 @@ Station
         <div class="row">
         <table class="table table-dark">
     <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Département</th>
-            <th>Région</th>
-            <th>Technicien</th>
-            <th>Adresse</th>
-            <th>Action</th>
+        <tr style="background-color:CADETBLUE;">
+            <th style="color:black">Nom</th>
+            <th style="color:black">Département</th>
+            <th style="color:black">Région</th>
+            <th style="color:black">Technicien</th>
+            <th style="color:black">Adresse</th>
+            <th style="color:black">Action</th>
 
         </tr>
     </thead>

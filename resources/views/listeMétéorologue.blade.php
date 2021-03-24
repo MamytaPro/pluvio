@@ -24,13 +24,13 @@ Administrateur
     <div class="row">
     <table class="table table-dark">
   <thead>
-    <tr>
-        <th>Prénom</th>
-        <th>Nom</th>
-        <th>Adresse</th>
-        <th>E-mail</th>
-        <th>Téléphone</th>
-        <th>Action</th>
+    <tr style="background-color:CADETBLUE;">
+        <th style="color:black">Prénom</th>
+        <th style="color:black">Nom</th>
+        <th style="color:black">Adresse</th>
+        <th style="color:black">E-mail</th>
+        <th style="color:black">Téléphone</th>
+        <th style="color:black">Action</th>
 
     </tr>
   </thead>

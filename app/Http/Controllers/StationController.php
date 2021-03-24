@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Station;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StationController extends Controller
@@ -40,30 +44,28 @@ class StationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nom' => ['required', 'string', 'max:255'],
-            'departement' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nom' => ['required', 'string'],
+            'departement' => ['required', 'string'],
             'region' => ['required', 'string'],
-            'tech_id' => ['required', 'string'],
+            'tech_id' => ['required', 'int'],
             'adresse' => ['required', 'string'],
         ]);
 
-        $station = new Sation();
+        $station = new Station();
 
         $station->nom = $request->nom;
         $station->departement = $request->departement;
         $station->region = $request->region;
-        $station->tech_id = $request->Auth::user('id');
+        $station->tech_id = $request->Auth::user()->Id;
         $station->adresse = $request->adresse;
         
 
         $station->save();
 
 
-        if (Auth::user()->role === 'Admin') {
+        if (Auth::user()) {
             Session::flash('message', 'Ajout réussi');
-        } else {
-            Session::flash('message', 'Ajout réussi');
-        }
+        } 
         
         return redirect()->route('station');
     }

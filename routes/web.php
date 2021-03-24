@@ -40,9 +40,14 @@ Route::get('/station', [StationController::class, 'index'])->name('station');
 Route::get('/add-user', function(){
     return view('register', ['page' => 'adduser']);
 })->name('add-user');
+
+
 Route::get('/add-station', function(){
     return view('registerStation', ['page' => 'addstation']);
 })->name('add-station');
+
+
+
 
 Route::post('/add-user', [UserController::class, 'store'])->name('adduser');
 Route::post('/add-station', [StationController::class, 'store'])->name('addstation');
