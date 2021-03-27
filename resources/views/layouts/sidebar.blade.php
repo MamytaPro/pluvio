@@ -24,7 +24,7 @@
             <a href="{{route('admin')}}" class="nav-link @if($page == 'admin') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
-               Administrateur
+               Acceuil
               </p>
             </a>
           </li>
@@ -102,6 +102,14 @@
 
           @if(Auth::user()->role === "Météorologue")
           <li class="nav-item">
+            <a href="" class="nav-link @if($page == 'meteoin') active @endif">
+              <i class="fas fa-cloud-rain"></i>
+              <p>
+               Acceuil
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{route('meteo')}}" class="nav-link @if($page == 'meteo') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
@@ -109,17 +117,35 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{route('station')}}" class="nav-link @if($page == 'station') active @endif">
+          <li class="nav-item menu open">
+            <a href="#" class="nav-link @if($page == 'station') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
-                Station
+                Stations
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-          </li>
+            <ul class="nav nav-treeview">
+              <li class="nav item">
+                <a href="{{route('station')}}" class="nav-link @if($page == 'station') active @endif">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Liste des Stations
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Localisation
+                  </p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link ">
+            <a href="{{route('releve')}}" class="nav-link ">
               <i class="fas fa-cloud-rain"></i>
               <p>
                 Relevés

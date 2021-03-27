@@ -20,10 +20,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReleveController;
 use App\Http\Controllers\StationController;
 
+use App\Models\User;
+use App\Models\Region;
+use App\Models\Departement;
+
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 Route::get('/administrateur', [AdminController::class, 'index'])->name('admin');
 
@@ -43,7 +47,16 @@ Route::get('/add-user', function(){
 
 
 Route::get('/add-station', function(){
-    return view('registerStation', ['page' => 'addstation']);
+    $user = User::where('role', 'Technicien')->get();
+    $regions = Region::orderBy('nom', 'ASC')->get();
+    $departements= Departement::orderBy('nom','ASC')->get();
+
+    return view('registerStation', [
+        'page' => 'addstation',
+        'users' => $user,
+        'regions' => $regions,
+        'departements'=> $departements
+        ]);
 })->name('add-station');
 
 
@@ -53,6 +66,9 @@ Route::post('/add-user', [UserController::class, 'store'])->name('adduser');
 Route::post('/add-station', [StationController::class, 'store'])->name('addstation');
 Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name('edituser');
 Route::post('/edit-user/{id}', [UserController::class, 'update'])->name('update');
+Route::get('/edit-station/{id}', [StationController::class, 'edit'])->name('editstation');
+Route::post('/edit-station/{id}', [StationController::class, 'update'])->name('update');
+
 Route::get('/delete-user/{id}', [UserController::class, 'destroy'])->name('deleteuser');
 
 //Route::get('/', [controlleur::class,'index']);

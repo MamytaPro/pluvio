@@ -8,10 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Releve extends Model
 {
     use HasFactory;
+
+    protected $table = "releves";
+
     protected $fillable=[
         'date',
         'quantite',
-        'vent',
-        'temperature'
+        'temperature',
+        'station_id'
     ];
+
+    public function station()
+    {
+        return $this->belongsTo(Station::class, 'station_id');
+    }
 }

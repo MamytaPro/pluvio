@@ -14,11 +14,11 @@ class CreateStationsTable extends Migration
     public function up()
     {
         Schema::create('stations', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('nom');
             $table->string('departement');
             $table->string('region');
-            $table->integer('tech_id');
+            $table->integer('user_id')->unsigned();
             $table->string('adresse');
             $table->timestamps();
         });

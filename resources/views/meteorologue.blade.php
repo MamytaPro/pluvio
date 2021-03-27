@@ -14,7 +14,6 @@ Météorologue
     </div>
   </div>
 @endif
-
 <div class="row mb-3">
         <div class="col-md-6">
             <h1>Liste des Techniciens</h1>
@@ -24,15 +23,16 @@ Météorologue
         </div>
     </div>
     <div class="row">
-    <table class="table table-dark">
+      <div class="col-12">
+      <table class="table table-striped" id="myTable">
       <thead>
-      <tr style="background-color:CADETBLUE;">
-          <th style="color:black">Prénom</th>
-          <th style="color:black">Nom</th>
-          <th style="color:black">Adresse</th>
-          <th style="color:black">E-mail</th>
-          <th style="color:black">Téléphone</th>
-          <th style="color:black">Action</th>
+      <tr>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Adresse</th>
+          <th>E-mail</th>
+          <th>Téléphone</th>
+          <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -51,5 +51,6 @@ Météorologue
       @endforeach
     </tbody>
     </table>
+      </div>
   </div>
 @endsection

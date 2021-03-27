@@ -76,8 +76,13 @@ class UserController extends Controller
         } else {
             Session::flash('message', 'Technicien ajouté avec succès');
         }
+
+        if ($user->role === 'Technicien') {
+            return redirect()->route('meteo');
+        }else{
+            return redirect()->route('getmeteo');
+        }
         
-        return redirect()->route('meteo');
     }
 
     /**
@@ -101,7 +106,7 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)->first();
 
-        return view('editUser', [
+        return view('modifierUser', [
             'user' => $user,
             'page' => 'editUser'
         ]);

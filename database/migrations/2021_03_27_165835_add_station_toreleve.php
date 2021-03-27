@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRelevesTable extends Migration
+class AddStationToreleve extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateRelevesTable extends Migration
      */
     public function up()
     {
-        Schema::create('releves', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->date('date');
-            $table->double('quantite');
-            $table->double('temperature');
+        Schema::table('releves', function (Blueprint $table) {
             $table->integer('station_id')->unsigned();
-            $table->timestamps();
         });
     }
 
@@ -30,6 +25,8 @@ class CreateRelevesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('releves');
+        Schema::table('releves', function (Blueprint $table) {
+            //
+        });
     }
 }

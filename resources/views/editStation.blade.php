@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header"><b>Ajouter une station</b></div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('add-station') }}">
+                    <form method="POST" action="{{ route('editstation', ['id'=>$station->id ]) }}">
                         @csrf
                         <div class="form-group">
                             <label for="">Nom Station</label>

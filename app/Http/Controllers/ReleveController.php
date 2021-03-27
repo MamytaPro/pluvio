@@ -40,14 +40,12 @@ class ReleveController extends Controller
         $request->validate([
             'date' => ['required', 'date','unique:users'],
             'quantite' => ['required', 'string'],
-            'vent' => ['required', 'string'],
             'temperature' => ['required', 'string'],
         ]);
         $releve = new releve();
 
         $releve->date = $request->date;
         $releve->quantite = $request->quantite;
-        $releve->vent = $request->vent;
         $releve->temperature = $request->temperature;
 
         $releve->save();

@@ -12,10 +12,15 @@ class Station extends Model
         'nom',
         'departement',
         'region',
-        'tech_id',
+        'user_id',
         'adresse',
     ];
-    public function User(){
-    return $this -> belongsTo(User::class,'tech_id');
+    public function user(){
+    return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function releves()
+    {
+        return $this->hasMany(Revele::class);
     }
 }

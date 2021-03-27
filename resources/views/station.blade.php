@@ -24,33 +24,35 @@ Station
             </div>
         </div>
         <div class="row">
-        <table class="table table-dark">
-    <thead>
-        <tr style="background-color:CADETBLUE;">
-            <th style="color:black">Nom</th>
-            <th style="color:black">Département</th>
-            <th style="color:black">Région</th>
-            <th style="color:black">Technicien</th>
-            <th style="color:black">Adresse</th>
-            <th style="color:black">Action</th>
+            <div class="col-12">
+            <table class="table table-striped" id="myTable">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Département</th>
+                    <th>Région</th>
+                    <th>Technicien</th>
+                    <th>Adresse</th>
+                    <th>Action</th>
 
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($stations as $sta)
-        <tr>
-        <td>{{$sta->nom}}</td>
-        <td>{{$sta->departement}}</td>
-        <td>{{$sta->region}}</td>
-        <td>{{$sta->tech_id}}</td>
-        <td>{{$sta->adresse}}</td>
-        <td>
-            <a href="" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
-            <a href="" class="btn btn-outline-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer?')"><i class="fa fa-trash"></i></a>
-        </td>
-        </tr>
-    @endforeach
-    </tbody>
-    </table>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($stations as $sta)
+                    <tr>
+                            <td  class="text-black">{{$sta->nom}}</td>
+                            <td  class="text-black">{{$sta->departement}}</td>
+                            <td  class="text-black">{{$sta->region}}</td>
+                            <td  class="text-black">{{$sta->user->prenom}} {{$sta->user->nom}}</td>
+                            <td  class="text-black">{{$sta->adresse}}</td>
+                            <td  class="text-black">
+                                <a href="{{route('editstation',['id'=> $sta->id])}}" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
+                                <a href="" class="btn btn-outline-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer?')"><i class="fa fa-trash"></i></a>
+                            </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+            </div>
         </div>
 @endsection

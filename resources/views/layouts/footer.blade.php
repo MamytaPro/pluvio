@@ -1,7 +1,7 @@
-<footer class="main-footer">
-    <strong>Copyright © 2020-2021 <a href="#">Pluvio</a>.</strong>
-    All rights reserved.
+<footer class="main-footer" style="background-color:#4f5962" color="black">
+    <strong>Copyright © 2020-2021 <a href="#">ANMS</a>.</strong>
+    
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0-rc
+      <b>All rights reserved.</b>
     </div>
   </footer>

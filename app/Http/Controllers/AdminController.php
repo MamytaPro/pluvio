@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Station;
 
 class AdminController extends Controller
 {
@@ -14,8 +15,15 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $nbreMeteo = User::where('role', 'Météorologue')->count();
+        $nbreTech = User::where('role', 'Technicien')->count();
+        $nbrestation = Station::all()->count();
+
         return view('administrateur', [
-            'page' => 'admin'
+            'page' => 'admin',
+            'meteos' => $nbreMeteo,
+            'tech' => $nbreTech ,
+            'stat' =>$nbrestation 
         ]);
     }
     public function getMeteo(){

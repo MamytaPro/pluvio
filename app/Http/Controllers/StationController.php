@@ -18,7 +18,7 @@ class StationController extends Controller
      */
     public function index()
     {
-        $stations = Station::with('User');
+        $stations = Station::with('user')->orderBy('nom', 'ASC')->get();
         return view('station', [
             'page' => 'station',
             'stations' => $stations
@@ -47,7 +47,7 @@ class StationController extends Controller
             'nom' => ['required', 'string'],
             'departement' => ['required', 'string'],
             'region' => ['required', 'string'],
-            'tech_id' => ['required', 'int'],
+            'user_id' => ['required'],
             'adresse' => ['required', 'string'],
         ]);
 
@@ -56,16 +56,11 @@ class StationController extends Controller
         $station->nom = $request->nom;
         $station->departement = $request->departement;
         $station->region = $request->region;
-        $station->tech_id = $request->Auth::user()->Id;
+        $station->user_id = $request->user_id;
         $station->adresse = $request->adresse;
         
 
         $station->save();
-
-
-        if (Auth::user()) {
-            Session::flash('message', 'Ajout réussi');
-        } 
         
         return redirect()->route('station');
     }
@@ -89,7 +84,12 @@ class StationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $station = Station::where('id', $id)->first();
+
+        return view('editStation', [
+            'station' => $station,
+            'page' => 'editStation'
+        ]);
     }
 
     /**
@@ -101,9 +101,28 @@ class StationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $station = Station::where('id', $id)->first();
 
+        $request->validate([
+            'nom' => ['required', 'string'],
+            'departement' => ['required', 'string'],
+            'region' => ['required', 'string'],
+            'user_id' => ['required'],
+            'adresse' => ['required', 'string'],
+        ]);
+
+        $station->nom = $request->nom;
+        $station->departement = $request->departement;
+        $station->region = $request->region;
+        $station->user_id = $request->user_id;
+        $station->adresse = $request->adresse;
+
+        $station->save();
+
+        Session::flash('message', 'Modification réussie');
+        
+        return redirect()->route('station');
+        }
     /**
      * Remove the specified resource from storage.
      *
@@ -112,6 +131,12 @@ class StationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $station = Station::where('id', $id)->first();
+
+        $station->delete();
+
+        Session::flash('message', 'Suppression réussie');
+        
+        return redirect()->route('station');
     }
 }

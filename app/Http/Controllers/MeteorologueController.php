@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Station;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -16,11 +18,15 @@ class MeteorologueController extends Controller
      */
     public function index()
     {
+        $nbreTech = User::where('role', 'Technicien')->count();
+        $nbrestation = Station::all()->count();
         $techniciens = User::where('role', 'Technicien')->orderBy('id', 'DESC')->get();
 
         return view('meteorologue', [
             'page' => 'meteo',
-            'techniciens' => $techniciens
+            'techniciens' => $techniciens,
+            'tech'=>$nbreTech,
+            'stat'=>$nbrestation
         ]);
     }
 
