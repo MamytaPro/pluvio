@@ -19,7 +19,10 @@ Administrateur
             <h1>Liste des Météorologues</h1>
         </div>
         <div class="col-md-6 text-right">
-            <a href="{{route('add-user')}}" class="btn btn-outline-success btn-sm">Ajouter un nouveau</a>
+            <a href="{{route('add-user', ['type'=>'meteo' ])}}" class="btn btn-outline-success btn-sm">
+              <i class="fas fa-plus"></i>
+              Ajouter un nouveau
+            </a>
         </div>
     </div>
     <div class="row">

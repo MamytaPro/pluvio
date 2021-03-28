@@ -20,7 +20,10 @@ Station
                 <h1>Liste des Stations</h1>
             </div>
             <div class="col-md-6 text-right">
-                <a href="{{route('add-station')}}" class="btn btn-outline-success btn-sm">Ajouter une nouvelle</a>
+                <a href="{{route('add-station')}}" class="btn btn-outline-success btn-sm">
+                    <i class="fas fa-plus"></i>
+                    Ajouter une nouvelle
+                </a>
             </div>
         </div>
         <div class="row">

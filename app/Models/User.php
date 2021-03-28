@@ -24,6 +24,7 @@ class User extends Authenticatable
         'role',
         'email',
         'password',
+        'meteo_id'
     ];
 
     /**
@@ -46,5 +47,15 @@ class User extends Authenticatable
     ];
     public function station(){
         return $this->hasMany(Station::class);
+    }
+
+    public function techniciens()
+    {
+        return $this->hasMany(User::class, 'meteo_id');
+    }
+
+    public function meteorologue()
+    {
+        return $this->belongsTo(User::class, 'meteo_id');
     }
 }

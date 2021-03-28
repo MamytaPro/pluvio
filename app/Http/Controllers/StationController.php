@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Departement;
+use App\Models\Region;
 use Illuminate\Http\Request;
 
 class StationController extends Controller
@@ -45,7 +47,7 @@ class StationController extends Controller
     {
         $request->validate([
             'nom' => ['required', 'string'],
-            'departement' => ['required', 'string'],
+            'departement' => ['required', 'string', 'unique:stations'],
             'region' => ['required', 'string'],
             'user_id' => ['required'],
             'adresse' => ['required', 'string'],
@@ -84,11 +86,18 @@ class StationController extends Controller
      */
     public function edit($id)
     {
+        $users= User::where('role','Technicien')->get();
+        $regions=Region::orderBy('nom', 'DESC')->get();
+        $departements=Departement::orderBy('nom', 'DESC')->get();
+
         $station = Station::where('id', $id)->first();
 
         return view('editStation', [
             'station' => $station,
-            'page' => 'editStation'
+            'page' => 'editStation',
+            'users' => $users,
+            'regions' => $regions,
+            'departements'=> $departements
         ]);
     }
 

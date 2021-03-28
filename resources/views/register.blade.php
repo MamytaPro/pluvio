@@ -3,7 +3,9 @@
 <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Ajout météorologue ou technicien</div>
+                <div class="card-header">
+                    Ajout @if($type === "meteo") météorologue @else technicien @endif
+                </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('adduser') }}">
                         @csrf
@@ -49,12 +51,9 @@
                         </div>
                         <div class="form-group">
                             <label for="">Rôle</label>
-                            @if(Auth::user()->role === "Admin")
-                            <select name="role" value="{{ old('role') }}" class="form-control @error('role') is-invalid @enderror" require>
-                                <option value="Admin">Admin</option>
-                                <option value="Météorologue">Météorologue</option>
-                                <option value="Technicien">Technicien</option>
-                            </select>
+                            @if($type === "meteo")
+                            <input type="text" value="Méteorologue" name="role" readonly="readonly" class="form-control">
+
                             @else
                             <input type="text" value="Technicien" name="role" readonly="readonly" class="form-control">
                             @endif
@@ -64,6 +63,18 @@
                                 </span>
                             @enderror
                         </div>
+
+                        @if($type === "tech")
+                        <div class="form-group">
+                            <label for="">Météorologue gérant</label>
+                            <select name="meteo_id" value="{{ old('meteo_id') }}" class="form-control @error('meteo_id') is-invalid @enderror" require>
+                                <option value="">Selectionner un météorologue</option>
+                                    @foreach($users as $user)
+                                        <option value="{{$user->id}}">{{$user->prenom}} {{$user->nom}}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+                        @endif
                         <div class="form-group">
                             <label for="">E-mail</label>
                             <input type="text" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" require>

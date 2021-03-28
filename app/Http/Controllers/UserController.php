@@ -46,6 +46,7 @@ class UserController extends Controller
             'adresse' => ['required', 'string'],
             'prenom' => ['required', 'string'],
             'role' => ['required', 'string'],
+            'meteo_id' => ['nullable'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
@@ -56,6 +57,7 @@ class UserController extends Controller
         $user->tel = $request->tel;
         $user->adresse = $request->adresse;
         $user->role = $request->role;
+        $user->meteo_id = isset($request->meteo_id) ? $request->meteo_id : null;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
 

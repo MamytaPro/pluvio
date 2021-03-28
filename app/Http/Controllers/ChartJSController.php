@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Station;
 use App\Models\Releve;
 Use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
-class AdminController extends Controller
+class ChartJSController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,40 +16,23 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $nbreMeteo = User::where('role', 'Météorologue')->count();
-        $nbreTech = User::where('role', 'Technicien')->count();
-        $nbrestation = Station::all()->count();
-
-        $record = Releve::select(DB::raw("SUM(quantite) as somme"), 
+        $record = Releve::select(DB::raw("DISTINCT SUM(quantite) as somme"), 
                         DB::raw("YEAR(date) as an"))
                     ->groupBy('an')
                     ->orderBy('an', 'ASC')
                     ->get();
-
+                
                     $data = [];
-
+                
                     foreach($record as $row) {
                         $data['label'][] = $row->somme;
-                        $data['chart_data'][] = (int)$row->an;
+                        $data['data'][] = (int)$row->an;
                     }
-
-                $data['chart_data'] = json_encode($data);
-
-        return view('administrateur', [
-            'page' => 'admin',
-            'meteos' => $nbreMeteo,
-            'tech' => $nbreTech ,
-            'stat' =>$nbrestation,
-            'data' => $data
-        ]);
+        
+            $data['chart_data'] = json_encode($data);
+            return view('chart-js', $data);
     }
-    public function getMeteo(){
-        $meteorologues = User::where('role', 'Météorologue')->orderBy('id', 'DESC')->get();
-        return view('listeMétéorologue',[
-            'page'=> 'getmeteo',
-            'meteos'=> $meteorologues
-        ]);
-    }
+
     /**
      * Show the form for creating a new resource.
      *

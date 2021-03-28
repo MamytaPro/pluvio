@@ -3,9 +3,12 @@
 <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Ajout Données</div>
+                <div class="card-header">
+                    <i class="fas fa-plus"></i>
+                    Inserer Données
+                </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('adduser') }}">
+                    <form method="POST" action="{{ route('addreleve') }}">
                         @csrf
                         <div class="row">
                         <div class="form-group col-md-6">
@@ -19,7 +22,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="">Quantité Pluie</label>
-                            <input type="text" name="nom" value="{{ old('quantite') }}" class="form-control @error('quantite') is-invalid @enderror" require>
+                            <input type="text" name="quantite" value="{{ old('quantite') }}" class="form-control @error('quantite') is-invalid @enderror" require>
                             @error('quantite')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -27,24 +30,34 @@
                             @enderror
                         </div>
                         </div>
+                        <div class="form-group">
+                            <label for="">Région</label>
+                            <select name="region" value="{{ old('region') }}" class="form-control @error('region') is-invalid @enderror" require>
+                                <option value="">Selectionner une région</option>
+                                    @foreach($regions as $region)
+                                        <option value="{{$region->nom}}">{{$region->nom}}</option>
+                                    @endforeach
+                            </select>
+                        </div>
                         <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="">Adresse</label>
-                            <input type="text" name="adresse" value="{{ old('adresse') }}" class="form-control @error('adresse') is-invalid @enderror" require>
-                            @error('adresse')
+                            <label for="">Température</label>
+                            <input type="text" name="temperature" value="{{ old('temperature') }}" class="form-control @error('temperature') is-invalid @enderror" require>
+                            @error('temperature')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="">Téléphone</label>
-                            <input type="text" name="tel" value="{{ old('tel') }}" class="form-control @error('tel') is-invalid @enderror" require>
-                            @error('tel')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <label for="">Station</label>
+                            <select name="station_id" value="{{ old('station_id') }}" class="form-control @error('station_id') is-invalid @enderror" require>
+                                <option value="">Selectionner une région</option>
+                                    @foreach($stations as $station)
+                                        <option value="{{$station->id}}">{{$station->nom}}</option>
+                                    @endforeach
+                            </select>
+                        </div>
                         </div>
                         <div class="form-group mt-3 row">
                             <div class="col-md-6">

@@ -15,9 +15,10 @@ class CreateRelevesTable extends Migration
     {
         Schema::create('releves', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('date');
+            $table->date('date')->nullable();
             $table->double('quantite');
             $table->double('temperature');
+            $table->string('region');
             $table->integer('station_id')->unsigned();
             $table->timestamps();
         });

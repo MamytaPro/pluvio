@@ -19,9 +19,11 @@ use App\Http\Controllers\TechnicienController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReleveController;
 use App\Http\Controllers\StationController;
+use App\Http\Controllers\ChartJSController;
 
 use App\Models\User;
 use App\Models\Region;
+use App\Models\Station;
 use App\Models\Departement;
 
 
@@ -41,8 +43,9 @@ Route::get('/station', [StationController::class, 'index'])->name('station');
 
 
 
-Route::get('/add-user', function(){
-    return view('register', ['page' => 'adduser']);
+Route::get('/add-user/{type}', function($type){
+    $user = User::where('role', 'Météorologue')->orderBy('prenom')->get();
+    return view('register', ['page' => 'adduser', 'type' => $type, 'users' => $user]);
 })->name('add-user');
 
 
@@ -61,9 +64,25 @@ Route::get('/add-station', function(){
 
 
 
+Route::get('/add-releve', function(){
+   
+    $stations = Station::orderBy('id', 'ASC')->get();
+    $regions = Region::orderBy('id', 'ASC')->get();
+    
 
+    return view('registerReleve', [
+        'page' => 'addstation',
+        'stations' => $stations,
+        'regions' => $regions
+        ]);
+})->name('add-releve');
+
+
+
+Route::get('chart-js', [ChartJSController::class, 'index']);
 Route::post('/add-user', [UserController::class, 'store'])->name('adduser');
 Route::post('/add-station', [StationController::class, 'store'])->name('addstation');
+Route::post('/add-releve', [ReleveController::class, 'store'])->name('addreleve');
 Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name('edituser');
 Route::post('/edit-user/{id}', [UserController::class, 'update'])->name('update');
 Route::get('/edit-station/{id}', [StationController::class, 'edit'])->name('editstation');

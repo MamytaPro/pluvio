@@ -6,7 +6,7 @@
       <!-- Sidebar Menu -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image mt-2">
-          <img src="assets/dist/img/avatarP.png" class="img-circle" alt="User Image">
+          <img src="{{asset('assets/dist/img/avatarP.png')}}" class="img-circle" alt="User Image">
         </div>
         <div class="info">
           <a class="nav-link" href="#" role="button">
@@ -21,7 +21,7 @@
             
           @if(Auth::user()->role === "Admin")
           <li class="nav-item">
-            <a href="{{route('admin')}}" class="nav-link @if($page == 'admin') active @endif">
+            <a href="{{route('admin')}}" class="nav-link @if(isset($page) && $page == 'admin') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
                Acceuil
@@ -29,7 +29,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('getmeteo')}}" class="nav-link @if($page == 'getmeteo') active @endif">
+            <a href="{{route('getmeteo')}}" class="nav-link @if(isset($page) && $page == 'getmeteo') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
                Météorologue
@@ -37,7 +37,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('meteo')}}" class="nav-link @if($page == 'meteo') active @endif">
+            <a href="{{route('meteo')}}" class="nav-link @if(isset($page) && $page == 'meteo') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
                 Technicien
@@ -45,7 +45,7 @@
             </a>
           </li>
           <li class="nav-item menu open">
-            <a href="#" class="nav-link @if($page == 'station') active @endif">
+            <a href="#" class="nav-link @if(isset($page) && $page == 'station') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
                 Stations
@@ -54,7 +54,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav item">
-                <a href="{{route('station')}}" class="nav-link @if($page == 'station') active @endif">
+                <a href="{{route('station')}}" class="nav-link @if(isset($page) && $page == 'station') active @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Liste des Stations
@@ -72,7 +72,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{route('releve')}}" class="nav-link @if($page == 'releve') active @endif">
+            <a href="{{route('releve')}}" class="nav-link @if(isset($page) && $page == 'releve') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
                 Relevés
@@ -83,7 +83,7 @@
 
           @if(Auth::user()->role === "Technicien")
           <li class="nav-item">
-            <a href="{{route('technicien')}}" class="nav-link  @if($page == 'technicien') active @endif">
+            <a href="{{route('technicien')}}" class="nav-link  @if(isset($page) && $page == 'technicien') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
                 Technicien
@@ -102,7 +102,7 @@
 
           @if(Auth::user()->role === "Météorologue")
           <li class="nav-item">
-            <a href="" class="nav-link @if($page == 'meteoin') active @endif">
+            <a href="" class="nav-link @if(isset($page) && $page == 'meteoin') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
                Acceuil
@@ -110,7 +110,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('meteo')}}" class="nav-link @if($page == 'meteo') active @endif">
+            <a href="{{route('meteo')}}" class="nav-link @if(isset($page) && $page == 'meteo') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
                 Technicien
@@ -118,7 +118,7 @@
             </a>
           </li>
           <li class="nav-item menu open">
-            <a href="#" class="nav-link @if($page == 'station') active @endif">
+            <a href="#" class="nav-link @if(isset($page) && $page == 'station') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
                 Stations
@@ -127,7 +127,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav item">
-                <a href="{{route('station')}}" class="nav-link @if($page == 'station') active @endif">
+                <a href="{{route('station')}}" class="nav-link @if(isset($page) && $page == 'station') active @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Liste des Stations

@@ -19,7 +19,10 @@ Météorologue
             <h1>Liste des Techniciens</h1>
         </div>
         <div class="col-md-6 text-right">
-            <a href="{{route('add-user')}}" class="btn btn-outline-success btn-sm">Ajouter un nouveau</a>
+            <a href="{{route('add-user', ['type'=>'tech'])}}" class="btn btn-outline-success btn-sm">
+            <i class="fas fa-plus"></i>
+            Ajouter un nouveau
+            </a>
         </div>
     </div>
     <div class="row">
@@ -32,6 +35,7 @@ Météorologue
           <th>Adresse</th>
           <th>E-mail</th>
           <th>Téléphone</th>
+          <th>Météorologue Gérant</th>
           <th>Action</th>
       </tr>
     </thead>
@@ -43,6 +47,7 @@ Météorologue
         <td>{{$tech->adresse}}</td>
         <td>{{$tech->email}}</td>
         <td>{{$tech->tel}}</td>
+        <td>{{$tech->meteo_id}}</td>
         <td>
           <a href="{{route('edituser',['id'=> $tech->id])}}" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
           <a href="{{route('deleteuser',['id'=> $tech->id])}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer?')"><i class="fa fa-trash"></i></a>

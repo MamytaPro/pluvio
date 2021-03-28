@@ -20,7 +20,7 @@ class MeteorologueController extends Controller
     {
         $nbreTech = User::where('role', 'Technicien')->count();
         $nbrestation = Station::all()->count();
-        $techniciens = User::where('role', 'Technicien')->orderBy('id', 'DESC')->get();
+        $techniciens = User::where('role', 'Technicien')->with('meteorologue')->orderBy('id', 'DESC')->get();
 
         return view('meteorologue', [
             'page' => 'meteo',

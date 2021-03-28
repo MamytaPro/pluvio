@@ -1,4 +1,4 @@
-@extends('layouts.master');
+@extends('layouts.master')
 @section('content')
 <div class="row justify-content-center">
         <div class="col-md-8" background="gray">
@@ -9,7 +9,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="">Nom Station</label>
-                            <input type="text" name="nom" value="{{ old('nom') }}" class="form-control @error('nom') is-invalid @enderror" require>
+                            <input type="text" name="nom" value="{{ $station->nom }}" class="form-control @error('nom') is-invalid @enderror" require>
                             @error('nom')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -19,7 +19,12 @@
                         <div class="form-group">
                             <label for="">Technicien</label>
                             <select name="user_id" value="{{ old('user_id') }}" class="form-control @error('user_id') is-invalid @enderror" require>
-                                <option value="">Selectionner un technicien</option>
+                                @foreach($users as $user)
+                                    @if($station->user_id == $user->id)
+                                         <option value="$station->user_id">{{$user->prenom}} {{$user->nom}}</option>
+                                   @endif
+                                @endforeach
+
                                 @foreach($users as $user)
                                     <option value="{{$user->id}}">{{$user->prenom}} {{$user->nom}}</option>
                                 @endforeach
@@ -29,7 +34,7 @@
                         <div class="form-group">
                             <label for="">Région</label>
                             <select name="region" value="{{ old('region') }}" class="form-control @error('region') is-invalid @enderror" require>
-                                <option value="">Selectionner une région</option>
+                                <option value="$station->region">{{$station->region}}</option>
                                     @foreach($regions as $region)
                                         <option value="{{$region->nom}}">{{$region->nom}}</option>
                                     @endforeach
@@ -38,7 +43,7 @@
                         <div class="form-group">
                             <label for="">Département</label>
                             <select name="departement" value="{{ old('departement') }}" class="form-control @error('departement') is-invalid @enderror" require>
-                                <option value="">Département</option>
+                                <option value="$station->departement">{{$station->departement}}</option>
                                 @foreach($departements as $dep)
                                         <option value="{{$dep->nom}}">{{$dep->nom}}</option>
                                     @endforeach
@@ -47,7 +52,7 @@
                         
                         <div class="form-group">
                             <label for="">Adresse</label>
-                            <input type="text" name="adresse" value="{{ old('adresse') }}" class="form-control @error('adresse') is-invalid @enderror" require>
+                            <input type="text" name="adresse" value="{{$station->adresse}}" class="form-control @error('adresse') is-invalid @enderror" require>
                             @error('adresse')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -69,5 +74,4 @@
             </div>
         </div>
     </div>
-
 @endsection

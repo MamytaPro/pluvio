@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Releve;
 
+
 class ReleveController extends Controller
 {
     /**
@@ -14,8 +15,10 @@ class ReleveController extends Controller
      */
     public function index()
     {
+        $releves = Releve::with('station')->orderBy('date', 'DESC')->get();
         return view('releve', [
-            'page' => 'releve'
+            'page' => 'releve',
+            'releves' => $releves
         ]);
     }
 
@@ -38,17 +41,26 @@ class ReleveController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'date' => ['required', 'date','unique:users'],
-            'quantite' => ['required', 'string'],
-            'temperature' => ['required', 'string'],
+            'date' => ['required', 'unique:releves'],
+            'quantite' => ['required'],
+            'region' =>['required'],
+            'temperature' => ['required'],
+            'station_id' => ['required']
+            
         ]);
-        $releve = new releve();
+
+        $releve = new Releve();
 
         $releve->date = $request->date;
-        $releve->quantite = $request->quantite;
-        $releve->temperature = $request->temperature;
+        $releve->quantite= $request->quantite;
+        $releve->region= $request->region;
+        $releve->temperature= $request->temperature;
+        $releve->station_id = $request->station_id;
+        
 
         $releve->save();
+
+        return redirect()->route('releve');
     }
 
     /**
