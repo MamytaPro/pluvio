@@ -20,7 +20,7 @@ Technicien
         labels: cData.label,
         datasets: [
           {
-            label: "Quantiés",
+            label: "Quantités",
             data: cData.data,
             backgroundColor: [
               "#DEB887",

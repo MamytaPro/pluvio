@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Releve;
+
 
 class TechnicienController extends Controller
 {
@@ -13,8 +15,10 @@ class TechnicienController extends Controller
      */
     public function index()
     {
+        $nbrreleve = Releve::all()->count();
         return view('technicien', [
-            'page' => 'technicien'
+            'page' => 'technicien',
+            'releves' => $nbrreleve
         ]);
     }
 

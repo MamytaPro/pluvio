@@ -34,15 +34,6 @@ Modification
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="">Région</label>
-                            <select name="region" value="{{ old('region') }}" class="form-control @error('region') is-invalid @enderror" require>
-                                <option value="">Selectionner une région</option>
-                                    @foreach($regions as $region)
-                                        <option value="{{$region->nom}}">{{$region->nom}}</option>
-                                    @endforeach
-                            </select>
-                        </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="">Adresse</label>

@@ -55,7 +55,7 @@
             <ul class="nav nav-treeview">
               <li class="nav item">
                 <a href="{{route('station')}}" class="nav-link @if(isset($page) && $page == 'station') active @endif">
-                  <i class="far fa-circle nav-icon"></i>
+                <i class="ion ion-clipboard mr-1"></i>
                   <p>
                     Liste des Stations
                   </p>
@@ -63,7 +63,7 @@
               </li>
               <li class="nav-item">
                 <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <i class="ion ion-location"></i>
                   <p>
                     Localisation
                   </p>
@@ -71,13 +71,32 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="{{route('releve')}}" class="nav-link @if(isset($page) && $page == 'releve') active @endif">
-              <i class="fas fa-cloud-rain"></i>
+          <li class="nav-item menu open">
+            <a href="#" class="nav-link @if(isset($page) && $page == 'releve') active @endif">
+            <i class="ion ion-clipboard"></i>
               <p>
                 Relevés
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('releve')}}" class="nav-link @if(isset($page) && $page == 'releve') active @endif">
+                <i class="ion ion-clipboard mr-1"></i>
+                  <p>
+                    Liste des relevés
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('chartjs')}}" class="nav-link @if(isset($page) && $page == 'chartjs') active @endif">
+                  <i class="fas fa-chart-bar"></i>
+                  <p>
+                    Graphiques
+                  </p>
+                </a>
+              </li>
+            </ul>
           </li>
           @endif
 
@@ -86,7 +105,7 @@
             <a href="{{route('technicien')}}" class="nav-link  @if(isset($page) && $page == 'technicien') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
-                Technicien
+                Acceuil
               </p>
             </a>
           </li>
@@ -102,7 +121,7 @@
 
           @if(Auth::user()->role === "Météorologue")
           <li class="nav-item">
-            <a href="" class="nav-link @if(isset($page) && $page == 'meteoin') active @endif">
+            <a href="{{route('acceuil')}}" class="nav-link @if(isset($page) && $page == 'acceuil') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
                Acceuil
@@ -145,7 +164,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{route('releve')}}" class="nav-link ">
+            <a href="{{route('releve')}}" class="nav-link @if(isset($page) && $page == 'releve') active @endif">
               <i class="fas fa-cloud-rain"></i>
               <p>
                 Relevés

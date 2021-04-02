@@ -12,9 +12,9 @@ Technicien
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3></h3>
+                <h3>{{$releves}}</h3>
 
-                <p></p>
+                <p>Releves Enregistrés</p>
               </div>
               <div class="icon">
               <i class="ion ion-person-add"></i>

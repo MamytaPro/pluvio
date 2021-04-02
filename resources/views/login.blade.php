@@ -7,12 +7,17 @@
     <title>Connexion</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body bg-color="grey">
-<div class="container col-md-6 mt-5">
+<body style="background-color: grey">
+<div class="container col-md-6 mt-2">
     <div class="row justify-content-center">
         <div class="col-md-8 pt-5">
             <div class="card">
-                <div class="card-header text-center">Connexion</div>
+                <div class="card-header text-center">
+                <span class="info-box-icon"><i class="far fa-house-user"></i></span>
+                    <p> 
+                       Connexion
+                    </p>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

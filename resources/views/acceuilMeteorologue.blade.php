@@ -1,24 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1>Administrateur</h1>
+    <h1>Météorologue</h1>
     </br>
     </br>
     </br>
     <div class="row">
           <div class="col-lg-3 col-6 ml-5">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>{{$meteos}}</h3>
-
-                <p>Météorologue</p>
-              </div>
-              <div class="icon">
-              <i class="ion ion-person-add"></i>
-              </div>
-              <a href="{{route('getmeteo')}}" class="small-box-footer">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
+            
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6 ml-4">
@@ -54,5 +43,3 @@
         </div>
 
 @endsection
-
-

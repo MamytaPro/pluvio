@@ -23,10 +23,9 @@
   <link rel="stylesheet" href="{{asset('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('assets/plugins/summernote/summernote-bs4.min.css')}}">
-  <link rel="stylesheet" href="{{asset('https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css')}}">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-
+  <link rel="stylesheet" href="{{asset('https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css')}}">
+  <link rel="stylesheet" href="{{asset('path/to/chartjs/dist/Chart.min.css')}}">
+  
  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -65,7 +64,7 @@
 <!-- Bootstrap 4 -->
 <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- ChartJS -->
-<script src="{{asset('sets/plugins/chart.js/Chart.min.js')}}as"></script>
+<script src="{{asset('assets/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- Sparkline -->
 <script src="{{asset('assets/plugins/sparklines/sparkline.js')}}"></script>
 <!-- JQVMap -->
@@ -84,6 +83,7 @@
 <script src="{{asset('assets/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+
 <!-- AdminLTE App -->
 <!-- {{asset('')}} -->
 
@@ -92,13 +92,10 @@
 <script src="{{asset('assets/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('assets/dist/js/pages/dashboard.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>
 $(document).ready( function () {
     $('#myTable').DataTable();
-} );
+});
 </script>
 @yield('js')
 </body>

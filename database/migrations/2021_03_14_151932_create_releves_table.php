@@ -20,6 +20,7 @@ class CreateRelevesTable extends Migration
             $table->double('temperature');
             $table->string('region');
             $table->integer('station_id')->unsigned();
+            
             $table->timestamps();
         });
     }

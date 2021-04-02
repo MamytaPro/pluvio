@@ -3,6 +3,16 @@
 Relevé
 @endsection
 @section('content')
+@if(session()->has('message'))
+    <div class="row">
+        <div class=" col-md-6 alert alert-success">
+        {{session('message')}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    </div>
+    @endif
 <div class="row mb-3">
         <div class="col-md-6">
             <h1>Liste des relevés</h1>
@@ -14,7 +24,14 @@ Relevé
             </a>
         </div>
     </div>
-
+    <div class="row mb-3">
+    <div class="col-md-12 text-right">
+            <a href="" class="btn btn-outline-success btn-sm">
+            <i class=""></i>
+            Tableaux Statistiques
+            </a>
+        </div>
+    </div>
 <div class="row">
       <div class="col-12">
       <table class="table table-striped" id="myTable">
@@ -37,8 +54,8 @@ Relevé
         <td>{{$rel->region}}</td>
         <td>{{$rel->station->nom}}</td>
         <td>
-          <a href="{{route('edituser',['id'=> $rel->id])}}" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
-          <a href="{{route('deleteuser',['id'=> $rel->id])}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer?')"><i class="fa fa-trash"></i></a>
+          <a href="{{route('editreleve',['id'=> $rel->id])}}" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
+          <a href="{{route('deletereleve',['id'=> $rel->id])}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer?')"><i class="fa fa-trash"></i></a>
         </td>
       </tr>
       @endforeach

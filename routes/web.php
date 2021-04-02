@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MeteorologueController;
+use App\Http\Controllers\AcceuilMeteorologueController;
 use App\Http\Controllers\TechnicienController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReleveController;
@@ -40,6 +41,8 @@ Route::get('/technicien', [TechnicienController::class, 'index'])->name('technic
 Route::get('/releve', [ReleveController::class, 'index'])->name('releve');
 
 Route::get('/station', [StationController::class, 'index'])->name('station');
+
+Route::get('/acceuilMeteorologue', [AcceuilMeteorologueController::class, 'index'])->name('acceuil');
 
 
 
@@ -79,16 +82,35 @@ Route::get('/add-releve', function(){
 
 
 
-Route::get('chart-js', [ChartJSController::class, 'index']);
+Route::get('chart-js', [ChartJSController::class, 'index'])->name('chartjs');
+
+
+
+
+
 Route::post('/add-user', [UserController::class, 'store'])->name('adduser');
-Route::post('/add-station', [StationController::class, 'store'])->name('addstation');
-Route::post('/add-releve', [ReleveController::class, 'store'])->name('addreleve');
 Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name('edituser');
 Route::post('/edit-user/{id}', [UserController::class, 'update'])->name('update');
+Route::get('/delete-user/{id}', [UserController::class, 'destroy'])->name('deleteuser');
+
+
+
+
+Route::post('/add-station', [StationController::class, 'store'])->name('addstation');
 Route::get('/edit-station/{id}', [StationController::class, 'edit'])->name('editstation');
 Route::post('/edit-station/{id}', [StationController::class, 'update'])->name('update');
+Route::get('/delete-station/{id}', [StationController::class, 'destroy'])->name('deletestation');
 
-Route::get('/delete-user/{id}', [UserController::class, 'destroy'])->name('deleteuser');
+
+
+
+
+Route::post('/add-releve', [ReleveController::class, 'store'])->name('addreleve');
+Route::get('/edit-releve/{id}', [ReleveController::class, 'edit'])->name('editreleve');
+Route::post('/edit-releve/{id}', [ReleveController::class, 'update'])->name('update');
+Route::get('/delete-releve/{id}', [ReleveController::class, 'destroy'])->name('deletereleve');
+
+
 
 //Route::get('/', [controlleur::class,'index']);
 

@@ -17,7 +17,7 @@ class ChartJSController extends Controller
     public function index()
     {
         $record = Releve::select(DB::raw("DISTINCT SUM(quantite) as somme"), 
-                        DB::raw("YEAR(date) as an"))
+                        DB::raw("MONTH(date) as an"))
                     ->groupBy('an')
                     ->orderBy('an', 'ASC')
                     ->get();

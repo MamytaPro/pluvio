@@ -24,9 +24,8 @@
                                          <option value="$station->user_id">{{$user->prenom}} {{$user->nom}}</option>
                                    @endif
                                 @endforeach
-
                                 @foreach($users as $user)
-                                    <option value="{{$user->id}}">{{$user->prenom}} {{$user->nom}}</option>
+                                <option value="{{$user->id}}">{{$user->prenom}}{{$user->nom}}</option>
                                 @endforeach
 
                             </select>
