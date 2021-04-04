@@ -3,7 +3,7 @@
 <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center" style="Background-Color: blue">
+                <div class="card-header text-center" style="Background-Color: cadetblue">
                     <b> Modifier @if($type === "meteo") météorologue @else technicien @endif </b>
                 </div>
                 <div class="card-body">
