@@ -3,7 +3,7 @@
 <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header text-center" style="Background-Color: blue">
                     <i class="fas fa-plus"></i>
                     Inserer Données
                 </div>
@@ -59,8 +59,11 @@
                             <select name="station_id" value="{{ old('station_id') }}" class="form-control @error('station_id') is-invalid @enderror" require>
                                     @foreach($stations as $station)
                                         @if($releve->station_id == $station->id)
-                                            <option value="$releve->station_id">{{$station->nom}}</option>
+                                            <option value="$station->nom">{{$station->nom}}</option>
                                         @endif
+                                    @endforeach
+                                    @foreach($stations as $station)
+                                        <option value="{{$station->nom}}">{{$station->nom}}</option>
                                     @endforeach
                             </select>
                         </div>

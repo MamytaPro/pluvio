@@ -3,7 +3,7 @@
 <div class="row justify-content-center">
         <div class="col-md-8" background="gray">
             <div class="card">
-                <div class="card-header"><b>Ajouter une station</b></div>
+                <div class="card-header text-center" style="Background-Color: blue"><b>Ajouter une station</b></div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('add-station') }}">
                         @csrf

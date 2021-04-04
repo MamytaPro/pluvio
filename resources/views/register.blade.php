@@ -3,8 +3,8 @@
 <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">
-                    Ajout @if($type === "meteo") météorologue @else technicien @endif
+                <div class="card-header text-center" style="Background-Color: blue">
+                    <b>Ajout @if($type === "meteo") météorologue @else technicien @endif</b>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('adduser') }}">

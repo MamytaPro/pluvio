@@ -106,11 +106,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $users = User::where('role','Meteorologue')->get();
+        $users = User::where('role','Météorologue')->get();
         $user = User::where('id', $id)->first();
 
-        
-        if ($user->role === 'Meteorologue') {
+
+        if ($user->role === 'Météorologue') {
             $type = 'meteo';
         } 
         else {

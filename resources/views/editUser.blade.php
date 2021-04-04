@@ -68,10 +68,14 @@
                         <div class="form-group">
                             <label for="">Météorologue gérant</label>
                             <select name="meteo_id" value="{{ old('meteo_id') }}" class="form-control @error('meteo_id') is-invalid @enderror" require>
-                                <option value="">Selectionner un météorologue</option>
-                                    @foreach($users as $user)
-                                        <option value="{{$user->id}}">{{$user->prenom}} {{$user->nom}}</option>
-                                    @endforeach
+                                @foreach($users as $user)
+                                    @if($user->meteo_id == $user->id)
+                                        <option value="$user->prenom $user->nom">{{$user->prenom}} {{$user->nom}} </option>
+                                    @endif
+                                @endforeach
+                                @foreach($users as $user)
+                                    <option value="{{$user->prenom}} {{$user->nom}}">{{$user->prenom}} {{$user->nom}}</option>
+                                @endforeach
                             </select>
                         </div>
                         @endif
