@@ -106,11 +106,21 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $users = User::where('role','Meteorologue')->get();
         $user = User::where('id', $id)->first();
 
-        return view('modifierUser', [
+        
+        if ($user->role === 'Meteorologue') {
+            $type = 'meteo';
+        } 
+        else {
+            $type = 'tech';
+        }
+        return view('editUser', [
             'user' => $user,
-            'page' => 'editUser'
+            'page' => 'modifierUser',
+            'type' => $type,
+            'users'=> $users
         ]);
     }
 
@@ -132,6 +142,7 @@ class UserController extends Controller
             'adresse' => ['required', 'string'],
             'prenom' => ['required', 'string'],
             'role' => ['required', 'string'],
+            'meteo_id' => ['nullable'],
         ]);
 
         $user->nom = $request->nom;
@@ -139,13 +150,14 @@ class UserController extends Controller
         $user->tel = $request->tel;
         $user->adresse = $request->adresse;
         $user->role = $request->role;
+        $user->meteo_id = isset($request->meteo_id) ? $request->meteo_id : null;
         $user->email = $request->email;
 
         $user->save();
 
         Session::flash('message', 'Modification réussie');
         
-        return redirect()->route('meteo');
+        return back();
     }
 
     /**
@@ -162,6 +174,6 @@ class UserController extends Controller
 
         Session::flash('message', 'Suppression réussie');
         
-        return redirect()->route('meteo');
+        return back();
     }
 }

@@ -75,7 +75,11 @@ class StationController extends Controller
      */
     public function show($id)
     {
-        //
+        $station = Station::where('id', $id)->first();
+        return view('showStation',[
+            'station' => $station,
+            'page' =>'showStation'
+        ]);
     }
 
     /**

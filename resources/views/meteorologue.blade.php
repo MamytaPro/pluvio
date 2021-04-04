@@ -49,7 +49,7 @@ Météorologue
         <td>{{$tech->tel}}</td>
         <td>{{$tech->meteo_id}}</td>
         <td>
-          <a href="{{route('edituser',['id'=> $tech->id])}}" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
+          <a href="{{route('edituser',['id'=> $tech->id ,'type'=>'tech'])}}" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
           <a href="{{route('deleteuser',['id'=> $tech->id])}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer?')"><i class="fa fa-trash"></i></a>
         </td>
       </tr>

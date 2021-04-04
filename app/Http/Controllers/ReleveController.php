@@ -72,9 +72,9 @@ class ReleveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Releve $releve)
+    public function show($id)
     {
-        return view('show', compact('releve'));
+        //
     }
 
     /**
@@ -144,13 +144,5 @@ class ReleveController extends Controller
         Session::flash('message', 'Suppression réussie');
         
         return redirect()->route('releve');
-    }
-    public function getDateAndStation(){
-        $date = Releve::with('date')->get();
-        $station= Releve::with('station_id');
-        return view('listeMétéorologue',[
-            'page'=> '',
-            'dates'=> $date
-        ]);
     }
 }

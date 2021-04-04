@@ -100,6 +100,8 @@ Route::post('/add-station', [StationController::class, 'store'])->name('addstati
 Route::get('/edit-station/{id}', [StationController::class, 'edit'])->name('editstation');
 Route::post('/edit-station/{id}', [StationController::class, 'update'])->name('update');
 Route::get('/delete-station/{id}', [StationController::class, 'destroy'])->name('deletestation');
+Route::post('/show-station/{id}', [StationController::class, 'show'])->name('show');
+Route::get('/show-station/{id}', [StationController::class, 'show'])->name('showstation');
 
 
 

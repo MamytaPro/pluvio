@@ -49,7 +49,7 @@ Station
                             <td  class="text-black">{{$sta->user->prenom}} {{$sta->user->nom}}</td>
                             <td  class="text-black">{{$sta->adresse}}</td>
                             <td  class="text-black">
-                                <a href="" class="btn btn-outline-info btn-sm"><i class="fas fa-eye"></i></a>
+                                <a href="{{route('showstation',['id'=> $sta->id])}}" class="btn btn-outline-info btn-sm"><i class="fas fa-eye"></i></a>
                                 <a href="{{route('editstation',['id'=> $sta->id])}}" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
                                 <a href="{{route('deletestation',['id'=> $sta->id])}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer?')"><i class="fa fa-trash"></i></a>
                             </td>

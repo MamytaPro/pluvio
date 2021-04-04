@@ -1,67 +1,59 @@
-@extends('layouts.master')
-@section('title')
-Modification
-@endsection
-
-
+@extends('layouts.master');
 @section('content')
-    <div class="row justify-content-center">
+<div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">
-                    Modifier météorologue ou technicien
+                <div class="card-header text-center" style="Background-Color: blue">
+                    <b> Modifier @if($type === "meteo") météorologue @else technicien @endif </b>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('update', ['id'=>$user->id ]) }}">
+                    <form method="POST" action="{{ route('adduser') }}">
                         @csrf
                         <div class="row">
-                            <div class="form-group col-md-6">
-                                <label for="">Prénom</label>
-                                <input type="text" name="prenom" value="{{ $user->prenom }}" class="form-control @error('prenom') is-invalid @enderror" require>
-                                @error('prenom')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="">Nom</label>
-                                <input type="text" name="nom" value="{{ $user->nom }}" class="form-control @error('nom') is-invalid @enderror" require>
-                                @error('nom')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Prénom</label>
+                            <input type="text" name="prenom" value="{{$user->prenom}}" class="form-control @error('prenom') is-invalid @enderror" require>
+                            @error('prenom')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Nom</label>
+                            <input type="text" name="nom" value="{{$user->nom}}" class="form-control @error('nom') is-invalid @enderror" require>
+                            @error('nom')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col-md-6">
-                                <label for="">Adresse</label>
-                                <input type="text" name="adresse" value="{{ $user->adresse }}" class="form-control @error('adresse') is-invalid @enderror" require>
-                                @error('adresse')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="">Téléphone</label>
-                                <input type="text" name="tel" value="{{ $user->tel }}" class="form-control @error('tel') is-invalid @enderror" require>
-                                @error('tel')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Adresse</label>
+                            <input type="text" name="adresse" value="{{$user->adresse}}" class="form-control @error('adresse') is-invalid @enderror" require>
+                            @error('adresse')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Téléphone</label>
+                            <input type="text" name="tel" value="{{$user->tel}}" class="form-control @error('tel') is-invalid @enderror" require>
+                            @error('tel')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                         </div>
                         <div class="form-group">
                             <label for="">Rôle</label>
-                            @if(Auth::user()->role === "Admin")
-                            <select name="role" value="{{ $user->role }}" class="form-control @error('role') is-invalid @enderror" require>
-                                <option value="Admin">Admin</option>
-                                <option value="Météorologue">Météorologue</option>
-                                <option value="Technicien">Technicien</option>
-                            </select>
+                            @if($type === "meteo")
+                            <input type="text" value="Méteorologue" name="role" readonly="readonly" class="form-control">
+
                             @else
                             <input type="text" value="Technicien" name="role" readonly="readonly" class="form-control">
                             @endif
@@ -71,9 +63,21 @@ Modification
                                 </span>
                             @enderror
                         </div>
+
+                        @if($type === "tech")
+                        <div class="form-group">
+                            <label for="">Météorologue gérant</label>
+                            <select name="meteo_id" value="{{ old('meteo_id') }}" class="form-control @error('meteo_id') is-invalid @enderror" require>
+                                <option value="">Selectionner un météorologue</option>
+                                    @foreach($users as $user)
+                                        <option value="{{$user->id}}">{{$user->prenom}} {{$user->nom}}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+                        @endif
                         <div class="form-group">
                             <label for="">E-mail</label>
-                            <input type="text" name="email" value="{{ $user->email }}" class="form-control @error('email') is-invalid @enderror" require>
+                            <input type="text" name="email" value="{{$user->email}}" class="form-control @error('email') is-invalid @enderror" require>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -87,12 +91,13 @@ Modification
                                 </button>
                             </div>
                             <div class="col-md-6 text-right">
-                                <a href="{{route('meteo')}}" class="btn btn-outline-danger">Annuler</a>
+                                <button type="reset" class="btn btn-outline-danger">Annuler</button>
                             </div>
-                         </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
