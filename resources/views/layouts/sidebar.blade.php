@@ -62,7 +62,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('localisation')}}" class="nav-link">
                 <i class="ion ion-location"></i>
                   <p>
                     Localisation
@@ -89,7 +89,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('chartjs')}}" class="nav-link @if(isset($page) && $page == 'chartjs') active @endif">
+                <a href="{{route('graphic')}}" class="nav-link @if(isset($page) && $page == 'graphic') active @endif">
                   <i class="fas fa-chart-bar"></i>
                   <p>
                     Graphiques
@@ -154,7 +154,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('localisation')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Localisation

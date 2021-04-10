@@ -21,28 +21,11 @@ class AdminController extends Controller
         $nbreMeteo = User::where('role', 'Météorologue')->count();
         $nbreTech = User::where('role', 'Technicien')->count();
         $nbrestation = Station::all()->count();
-
-        $record = Releve::select(DB::raw("SUM(quantite) as somme"), 
-                        DB::raw("YEAR(date) as an"))
-                    ->groupBy('an')
-                    ->orderBy('an', 'ASC')
-                    ->get();
-
-                    $data = [];
-
-                    foreach($record as $row) {
-                        $data['label'][] = $row->somme;
-                        $data['chart_data'][] = (int)$row->an;
-                    }
-
-                $data['chart_data'] = json_encode($data);
-
         return view('administrateur', [
             'page' => 'admin',
             'meteos' => $nbreMeteo,
             'tech' => $nbreTech ,
-            'stat' =>$nbrestation,
-            'data' => $data
+            'stat' =>$nbrestation
         ]);
     }
     public function getMeteo(){

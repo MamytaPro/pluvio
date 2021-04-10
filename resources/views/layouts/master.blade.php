@@ -84,12 +84,17 @@
 <!-- overlayScrollbars -->
 <script src="{{asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 
+
+<script src="{{asset('https://code.jquery.com/jquery-3.3.1.min.js')}}"></script> 
+<script src="{{asset('https://unpkg.com/leaflet@1.7.1/dist/leaflet.js')}}"></script>
 <!-- AdminLTE App -->
 <!-- {{asset('')}} -->
 
 <script src="{{asset('assets/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('assets/dist/js/demo.js')}}"></script>
+<script src="{{asset('assets/plugins/chart.js/Chart.min.js')}}"></script>
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('assets/dist/js/pages/dashboard.js')}}"></script>
 <script>

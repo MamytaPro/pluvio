@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Station;
+Use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
-class LocalisationController extends Controller
+
+class GraphicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +17,15 @@ class LocalisationController extends Controller
      */
     public function index()
     {
-        return view('localisation', [
-            'page' => 'localisation',
+        // $record = Releve::with('station')->select(DB::raw('distinct Sum(quantite) as somme, Month(date) as mois, Year(date) as an; station_id')) 
+        //         ->groupBy(DB::raw("Month(date)"))->orderBy(DB::raw("Month(date)"), "ASC")->get();
+        //  dd($record);
+
+        $stations = Station::orderBy('nom', 'ASC')->get();
+        
+        return view('graphic', [
+            'page' => 'graphic',
+            'stations' => $stations,
         ]);
     }
 
@@ -47,7 +58,11 @@ class LocalisationController extends Controller
      */
     public function show($id)
     {
-        //
+        $station = Station::where('id', $id)->with('releves')->first();
+        return view('relevesStation', [
+            'page' => 'graphic',
+            'station' => $station
+        ]);
     }
 
     /**

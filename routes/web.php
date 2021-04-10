@@ -21,17 +21,29 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReleveController;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\ChartJSController;
+use App\Http\Controllers\LocalisationController;
+use App\Http\Controllers\GraphicController;
 
 use App\Models\User;
 use App\Models\Region;
 use App\Models\Station;
 use App\Models\Departement;
+use App\Models\Releve;
 
 
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::get('/graphic',[GraphicController::class, 'index'])->name('graphic');
+Route::get('/graphic/{id}',[GraphicController::class, 'show'])->name('infoStation');
 
 Route::get('/', function () {
-    return view('login');
-});
+    $releves = Releve::orderBy('date', 'DESC')->get();
+    return view('welcome', ['releves'=>$releves]);
+})->name('welcome');
+
 Route::get('/administrateur', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/meteorologue', [MeteorologueController::class, 'index'])->name('meteo');
@@ -83,6 +95,7 @@ Route::get('/add-releve', function(){
 
 
 Route::get('chart-js', [ChartJSController::class, 'index'])->name('chartjs');
+Route::get('localisation', [LocalisationController::class, 'index'])->name('localisation');
 
 
 

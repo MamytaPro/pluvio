@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Releve;
+
 
 class Station extends Model
 {
@@ -21,6 +23,6 @@ class Station extends Model
 
     public function releves()
     {
-        return $this->hasMany(Revele::class);
+        return $this->hasMany('App\Models\Releve');
     }
 }

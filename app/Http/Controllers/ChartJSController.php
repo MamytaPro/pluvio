@@ -16,20 +16,22 @@ class ChartJSController extends Controller
      */
     public function index()
     {
-        $record = Releve::select(DB::raw("DISTINCT SUM(quantite) as somme"), 
-                        DB::raw("MONTH(date) as an"))
-                    ->groupBy('an')
-                    ->orderBy('an', 'ASC')
-                    ->get();
+        $record = Releve::select(DB::raw('distinct Sum(quantite) as somme, Month(date) as mois')) 
+                ->groupBy(DB::raw("Month(date)"))->orderBy (DB::raw("Month(date)"), "ASC")->get();
                 
                     $data = [];
-                
-                    foreach($record as $row) {
-                        $data['label'][] = $row->somme;
-                        $data['data'][] = (int)$row->an;
+                    $moisActuel = intval(date('m'));
+
+                    for ($i=1; $i<=$moisActuel; $i++) {
+                        $som=0;
+                        foreach ($record as $row) {
+                            if($i===$row->mois){
+                                $som=$row->quantite;
+                                break;
+                            }
+                        }
+                        $data[] = $som;   
                     }
-        
-            $data['chart_data'] = json_encode($data);
             return view('chart-js', $data);
     }
 
@@ -62,7 +64,7 @@ class ChartJSController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

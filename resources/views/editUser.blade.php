@@ -4,7 +4,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-center" style="Background-Color: cadetblue">
-                    <b> Modifier @if($type === "meteo") météorologue @else technicien @endif </b>
+                    <b> Modifier @if($type === "meteo")  météorologue @else  technicien @endif </b>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('adduser') }}">
@@ -68,20 +68,20 @@
                         <div class="form-group">
                             <label for="">Météorologue gérant</label>
                             <select name="meteo_id" value="{{ old('meteo_id') }}" class="form-control @error('meteo_id') is-invalid @enderror" require>
-                                @foreach($users as $user)
-                                    @if($user->meteo_id == $user->id)
-                                        <option value="$user->prenom $user->nom">{{$user->prenom}} {{$user->nom}} </option>
+                                @foreach($users as $User)
+                                    @if($user->meteo_id == $User->id)
+                                        <option value="$User->prenom $User->nom">{{$User->prenom}} {{$User->nom}} </option>
                                     @endif
                                 @endforeach
-                                @foreach($users as $user)
-                                    <option value="{{$user->prenom}} {{$user->nom}}">{{$user->prenom}} {{$user->nom}}</option>
+                                @foreach($users as $User)
+                                    <option value="{{$User->prenom}} {{$User->nom}}">{{$User->prenom}} {{$User->nom}}</option>
                                 @endforeach
                             </select>
                         </div>
                         @endif
                         <div class="form-group">
                             <label for="">E-mail</label>
-                            <input type="text" name="email" value="{{$user->email}}" class="form-control @error('email') is-invalid @enderror" require>
+                            <input type="text" name="email" value="{{ $user->email }}" class="form-control @error('email') is-invalid @enderror" require>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -90,9 +90,7 @@
                         </div>
                         <div class="form-group mt-3 row">
                             <div class="col-md-6">
-                                <button type="submit" class="btn btn-outline-success">
-                                    Modifier
-                                </button>
+                                <button type="submit" class="btn btn-outline-success">Modifier</button>
                             </div>
                             <div class="col-md-6 text-right">
                                 <button type="reset" class="btn btn-outline-danger">Annuler</button>
