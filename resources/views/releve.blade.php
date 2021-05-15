@@ -26,7 +26,7 @@ Relevé
     </div>
     <div class="row mb-3">
     <div class="col-md-12 text-right">
-            <a href="" class="btn btn-outline-success btn-sm">
+            <a href="{{route('Sta')}}" class="btn btn-outline-success btn-sm">
             <i class=""></i>
             Tableaux Statistiques
             </a>

@@ -32,7 +32,7 @@ class ChartJSController extends Controller
                         }
                         $data[] = $som;   
                     }
-            return view('chart-js', $data);
+            return json_encode($data);
     }
 
     /**

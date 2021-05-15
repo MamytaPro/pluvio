@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header text-center" style="Background-Color: cadetblue">
                     <i class="fas fa-plus"></i>
-                    Inserer Données
+                    Modifier Données
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{route('editreleve', ['id'=>$releve->id])}}">

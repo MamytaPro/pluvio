@@ -14,15 +14,15 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner">
+    <div class="carousel-inner mt-2">
       <div class="carousel-item active">
-        <img src="{{asset('assets/dist/img/images.jpeg')}}" class="d-block w-100" height="460">
+        <img src="{{asset('assets/dist/img/images.jpeg')}}" class="d-block w-100" height="250" width="150">
       </div>
       <div class="carousel-item">
-        <img src="{{asset('assets/dist/img/images2.jpeg')}}" class="d-block w-100" height="460">
+        <img src="{{asset('assets/dist/img/images2.jpeg')}}" class="d-block w-100" height="250" width="150">
       </div>
       <div class="carousel-item">
-        <img src="{{asset('assets/dist/img/images3.jpeg')}}" class="d-block w-100" height="460">
+        <img src="{{asset('assets/dist/img/images3.jpeg')}}" class="d-block w-100" height="250" width="150">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -37,14 +37,14 @@
 
   <section class="container mt-3">
   <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Liste des relevés de cette année</h3>
+              <div class="card-header" style="Background: cadetblue">
+                <h3 class="card-title-text-center">Liste des relevés</h3>
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
+              <div class="card-body" style="Background: cadetblue">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                  <tr>
+                  <tr style="Background: cadetblue">
                     <th>Date</th>
                     <th>Quantité (mm)</th>
                     <th>Température</th>

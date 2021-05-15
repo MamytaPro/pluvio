@@ -95,6 +95,7 @@ Route::get('/add-releve', function(){
 
 
 Route::get('chart-js', [ChartJSController::class, 'index'])->name('chartjs');
+Route::get('Statistique', [StatistiqueSController::class, 'index'])->name('Sta');
 Route::get('localisation', [LocalisationController::class, 'index'])->name('localisation');
 
 

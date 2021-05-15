@@ -42,7 +42,7 @@ class UserController extends Controller
         $request->validate([
             'nom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'tel' => ['required', 'string'],
+            'tel' => ['required', 'min:9', 'max:9','regex:/^[33|70|75|76|77|78]+[0-9]{7}$/'],
             'adresse' => ['required', 'string'],
             'prenom' => ['required', 'string'],
             'role' => ['required', 'string'],

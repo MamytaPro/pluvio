@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="{{asset('assets/plugins/summernote/summernote-bs4.min.css')}}">
   <link rel="stylesheet" href="{{asset('https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css')}}">
   <link rel="stylesheet" href="{{asset('path/to/chartjs/dist/Chart.min.css')}}">
-  
+  <link rrel="stylesheet" href="{{asset('https://unpkg.com/leaflet@1.7.1/dist/leaflet.js')}}">
  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -76,13 +76,15 @@
 <script src="{{asset('assets/plugins/moment/moment.min.js')}}"></script>
 <script src="{{asset('assets/plugins/daterangepicker/daterangepicker.js')}}"></script>
 
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js')}}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{asset('assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 <!-- Summernote -->
 <script src="{{asset('assets/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+
+<script src="{{asset('https://cdn.jsdelivr.net/npm/chart.js@3.1.1/dist/chart.min.js')}}"></script>
 
 
 <script src="{{asset('https://code.jquery.com/jquery-3.3.1.min.js')}}"></script> 

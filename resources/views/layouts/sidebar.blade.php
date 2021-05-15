@@ -73,7 +73,7 @@
           </li>
           <li class="nav-item menu open">
             <a href="#" class="nav-link @if(isset($page) && $page == 'releve') active @endif">
-            <i class="ion ion-clipboard"></i>
+            <i class="fas fa-cloud-rain"></i>
               <p>
                 Relevés
                 <i class="fas fa-angle-left right"></i>
@@ -109,13 +109,32 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{route('releve')}}" class="nav-link ">
-              <i class="fas fa-cloud-rain"></i>
+          <li class="nav-item menu open">
+            <a href="#" class="nav-link @if(isset($page) && $page == 'releve') active @endif">
+            <i class="ion ion-clipboard"></i>
               <p>
                 Relevés
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('releve')}}" class="nav-link @if(isset($page) && $page == 'releve') active @endif">
+                <i class="ion ion-clipboard mr-1"></i>
+                  <p>
+                    Liste des relevés
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('graphic')}}" class="nav-link @if(isset($page) && $page == 'graphic') active @endif">
+                  <i class="fas fa-chart-bar"></i>
+                  <p>
+                    Graphiques
+                  </p>
+                </a>
+              </li>
+            </ul>
           </li>
           @endif
 

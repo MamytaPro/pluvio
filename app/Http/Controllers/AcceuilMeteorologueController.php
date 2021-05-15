@@ -8,14 +8,14 @@ use App\Models\Station;
 
 class AcceuilMeteorologueController extends Controller
 {
-    public function index(){
+   public function index(){
 
     $nbreTech = User::where('role', 'Technicien')->count();
     $nbrestation = Station::all()->count();
         return view('acceuilMeteorologue', [
             'page' => 'acceuil',
             'tech' => $nbreTech ,
-            'stat' =>$nbrestation,
+            'stat' =>$nbrestation
         ]);
     }
 }

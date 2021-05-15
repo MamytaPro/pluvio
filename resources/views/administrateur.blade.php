@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1>Bienvenue dans le site de l'ANMS</h1>
     <h1>Administrateur</h1>
     </br>
     </br>

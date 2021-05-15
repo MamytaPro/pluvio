@@ -32,7 +32,7 @@ class HomeController extends Controller
             return redirect()->route('technicien');
         }
         else{
-            return redirect()->route('meteo');
+            return redirect()->route('acceuil');
            
         }
         

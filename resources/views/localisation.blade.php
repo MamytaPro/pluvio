@@ -1,4 +1,11 @@
-@extends('layouts.master')   
+@extends('layouts.master')  
+
+@section('content')
+
+<div class="container">
+    
+</div>
+@endsection
 @section('js')  
 <script>
 var map = L.map('map').setView([14.510, -14.446], 9);
@@ -13,5 +20,3 @@ L.marker([14, -14.44]).addTo(map)
 </script>
 @endsection
 
-@section('content')
-@endsection

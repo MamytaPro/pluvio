@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Station;
+use App\Models\releve;
 Use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
@@ -26,6 +27,7 @@ class GraphicController extends Controller
         return view('graphic', [
             'page' => 'graphic',
             'stations' => $stations,
+            
         ]);
     }
 
@@ -59,9 +61,21 @@ class GraphicController extends Controller
     public function show($id)
     {
         $station = Station::where('id', $id)->with('releves')->first();
+        $record = Releve::select(DB::raw('distinct Sum(quantite) as qte, Month(date) as mois')) 
+                ->where('station_id',$id)->groupBy(DB::raw("Month(date)"))->orderBy (DB::raw("Month(date)"), "ASC")->get();
+                
+                    $data = [];
+                    
+                        foreach ($record as $row) {
+                        $data[] = $row->qte;   
+                    }
+                    
+        
         return view('relevesStation', [
             'page' => 'graphic',
-            'station' => $station
+            'station' => $station,
+            'record' => $record,
+            'data' => json_encode($data)
         ]);
     }
 
